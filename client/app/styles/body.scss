@@ -1,0 +1,52 @@
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $font-family;
+  font-size: $font-size;
+  cursor: default;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+a:visited,
+a:active {
+  color: #000;
+}
+
+button,
+input[type="button"] {
+  @include button();
+}
+
+button:disabled,
+input[type="button"]:disabled {
+  color: #999;
+}
+
+input:not([type]),
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  font-family: $font-family;
+  font-size: $font-size;
+  border-radius: 3px;
+  border: 1px solid #999;
+  padding: 4px 9px 4px 9px;
+  margin: 0;
+  line-height: 1;
+  outline: none;
+  width: 100%;
+}

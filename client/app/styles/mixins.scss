@@ -1,0 +1,12 @@
+@mixin button() {
+  font-family: $font-family;
+  font-size: $font-size;
+  background: fade-out(#000, 0.2);
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  padding: 5px 9px 5px 9px;
+  outline: none;
+  font-size: 14px;
+  margin: 0;
+}

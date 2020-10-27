@@ -1,0 +1,19 @@
+.block-application-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  > a {
+    display: block;
+    padding: 8px 15px 7px 15px;
+    text-decoration: none;
+    &.active {
+      background: fade-out(#000, 0.2);
+      color: #fff;
+    }
+    &.name {
+      background: none;
+      color: #000;
+      font-weight: 600;
+    }
+  }
+}
