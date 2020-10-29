@@ -1,0 +1,13 @@
+.block-stats {
+  padding: 10px;
+  font-size: $font-size-smaller;
+  > .section {
+    margin-bottom: 5px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    > .title {
+      font-weight: 600;
+    }
+  }
+}

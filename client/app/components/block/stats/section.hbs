@@ -1,0 +1,10 @@
+<div class="section">
+  <div class="title">{{@title}}</div>
+  <div class="models">
+    {{#each @models as |model|}}
+      <div class="model" role="button" {{on "click" (fn @select model)}}>{{model}}</div>
+    {{else}}
+      <div class="placeholder">{{@placeholder}}</div>
+    {{/each}}
+  </div>
+</div>
