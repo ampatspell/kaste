@@ -1,4 +1,9 @@
 <div class="block-application-header" {{class @class}}>
   <LinkTo class="name" @route="index">{{this.name}}</LinkTo>
-  <LinkTo @route="uploads">Uploads</LinkTo>
+  <div class="delimiter"></div>
+  {{#if this.store.user}}
+    <LinkTo @route="session.delete">sign out</LinkTo>
+  {{else}}
+    <LinkTo @route="session.new">sign in</LinkTo>
+  {{/if}}
 </div>
