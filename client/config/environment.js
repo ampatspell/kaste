@@ -35,7 +35,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.kaste.isDevelopment = true;
+    if(process.env.STATS !== 'false') {
+      ENV.kaste.isDevelopment = true;
+    }
   }
 
   if (environment === 'test') {
