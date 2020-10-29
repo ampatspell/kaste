@@ -8,6 +8,9 @@ export default class Uploads extends EmberObject {
 
   doc = null
 
+  @reads('doc.id')
+  id
+
   @data('filename')
   filename
 
@@ -33,6 +36,12 @@ export default class Uploads extends EmberObject {
 
   get formattedTimestamp() {
     return formatTimestamp(this.createdAt);
+  }
+
+  //
+
+  async delete() {
+    await this.doc.delete();
   }
 
 }

@@ -19,4 +19,9 @@ Router.map(function() {
     });
   });
 
+  this.route('downloads', { path: '/get' }, function() {
+    this.route('download', { path: '/:download_id' }, function() {
+    });
+  })
+
 });

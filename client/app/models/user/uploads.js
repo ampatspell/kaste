@@ -18,4 +18,8 @@ export default class Uploads extends EmberObject {
     await load(this.query);
   }
 
+  byId(id) {
+    return this.models.find(model => model.id === id);
+  }
+
 }

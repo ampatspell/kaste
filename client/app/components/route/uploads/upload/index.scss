@@ -1,0 +1,17 @@
+.route-uploads-upload-index {
+  > .url {
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  > .filename {
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  > .details {
+    margin-bottom: 3px;
+  }
+  > .date {
+    font-size: $font-size-smaller;
+    margin-bottom: 25px;
+  }
+}

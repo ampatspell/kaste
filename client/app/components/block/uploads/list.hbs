@@ -1,7 +1,7 @@
 <div class="block-uploads-list" {{class @class}}>
 
   {{#each @uploads.models as |upload|}}
-    <Block::Uploads::List::Item @model={{upload}}/>
+    <Block::Uploads::List::Item @model={{upload}} @onClick={{fn @onSelected upload}}/>
   {{else}}
     <div class="placeholder">Nothing uploaded yet</div>
   {{/each}}

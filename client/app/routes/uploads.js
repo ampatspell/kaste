@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import { route } from 'zuglet/decorators';
 
 @route()
-export default class UploadsNewRoute extends Route {
+export default class UploadsRoute extends Route {
 
   @service
   store

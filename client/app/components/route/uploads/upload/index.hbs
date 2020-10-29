@@ -1,0 +1,21 @@
+<div class="route-uploads-upload-index">
+
+  <div class="url">
+    <LinkTo @route="downloads.download" @model={{hash id=@model.id}}>{{this.url}}</LinkTo>
+  </div>
+
+  <div class="filename">{{@model.filename}}</div>
+
+  <div class="details">
+    {{@model.formattedContentType}}, {{@model.formattedSize}}
+  </div>
+
+  <div class="date">
+    {{@model.formattedTimestamp}}
+  </div>
+
+  <div class="actions">
+    <Input::Button @value="Delete" @onClick={{this.delete}}/>
+  </div>
+
+</div>
