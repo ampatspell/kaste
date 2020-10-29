@@ -1,0 +1,20 @@
+<div class="route-downloads-download-index">
+  <div class="content">
+
+    {{#if @model.exists}}
+
+      <div class="file" role="button" {{on "click" this.open}}>
+        <div class="filename">{{@model.filename}}</div>
+        <div class="details">
+          {{@model.formattedContentType}}, {{@model.formattedSize}}
+        </div>
+      </div>
+
+    {{else}}
+
+      <div class="placeholder">File went somewhere else</div>
+
+    {{/if}}
+
+  </div>
+</div>

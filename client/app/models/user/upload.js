@@ -4,7 +4,7 @@ import { formatBytes, formatContentType, formatTimestamp } from '../../utils';
 
 const data = name => reads(`doc.data.${name}`);
 
-export default class Uploads extends EmberObject {
+export default class Upload extends EmberObject {
 
   doc = null
 
