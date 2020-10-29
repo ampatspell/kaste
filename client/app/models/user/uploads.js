@@ -8,14 +8,14 @@ export default class Uploads extends EmberObject {
   @service
   store
 
-  @activate().content(({ store }) => store.collection('uploads').query())
+  @activate().content(({ store }) => store.collection('uploads').orderBy('createdAt', 'desc').query())
   query
 
   @models('query.content').named('user/upload').mapping(doc => ({ doc }))
   models
 
   async load() {
-    load(this.query);
+    await load(this.query);
   }
 
 }

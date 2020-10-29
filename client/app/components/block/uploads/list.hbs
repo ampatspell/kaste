@@ -1,0 +1,9 @@
+<div class="block-uploads-list" {{class @class}}>
+
+  {{#each @uploads.models as |upload|}}
+    <Block::Uploads::List::Item @model={{upload}}/>
+  {{else}}
+    <div class="placeholder">Nothing uploaded yet</div>
+  {{/each}}
+
+</div>

@@ -59,11 +59,12 @@ export default class PagesUploadsNew extends EmberObject {
     };
   }
 
-  async _createDocument({ ref, url, filename, contentType }) {
+  async _createDocument({ ref, url, filename, contentType, size }) {
     let doc = ref.new({
       url,
       filename,
       contentType,
+      size,
       createdAt: this.store.serverTimestamp
     });
     this.doc = doc;
@@ -80,8 +81,8 @@ export default class PagesUploadsNew extends EmberObject {
     let ref = store.collection('uploads').doc();
     let path = ref.path;
 
-    let { url } = await this._uploadFile({ path, file, filename, contentType, size });
-    await this._createDocument({ ref, url, filename, contentType });
+    let { url } = await this._uploadFile({ path, file, filename, contentType });
+    await this._createDocument({ ref, url, filename, size, contentType });
 
     let { id } = ref;
     return {

@@ -1,0 +1,20 @@
+.block-uploads-list {
+  margin: -15px -15px;
+  > .item {
+    padding: 10px 15px;
+    border-bottom: 1px solid fade-out(#000, 0.9);
+    > .filename {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    > .details {
+      margin-bottom: 2px;
+    }
+    > .date {
+      font-size: $font-size-smaller;
+    }
+  }
+  > .placeholder {
+    padding: 15px;
+  }
+}
