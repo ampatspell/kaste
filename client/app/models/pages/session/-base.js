@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { or, and, not } from 'macro-decorators';
 import { inject as service } from '@ember/service';
 
-export default class SessioNNew extends EmberObject {
+export default class PagesSessionBase extends EmberObject {
 
   @service
   store

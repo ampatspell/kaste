@@ -1,0 +1,27 @@
+<div class="route-uploads-new">
+
+  <div class="content">
+
+    {{#if this.model.isBusy}}
+
+      <div class="uploading">
+        Progress {{this.model.progress}}%…
+      </div>
+
+    {{else}}
+
+      <div class="idle">
+        {{#if this.model.isError}}
+          <div class="error">
+            {{this.model.error.message}}
+          </div>
+        {{/if}}
+        <Input::File @onFile={{this.onFile}} @class="file"/>
+        <Input::Button @class="button" @value="Upload file" @disabled={{this.model.isUploadDisabled}} @onClick={{this.onSubmit}}/>
+      </div>
+
+    {{/if}}
+
+  </div>
+
+</div>
