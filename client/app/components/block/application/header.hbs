@@ -2,6 +2,8 @@
   <LinkTo class="name" @route="index">{{this.name}}</LinkTo>
   <div class="delimiter"></div>
   {{#if this.store.user}}
+    <LinkTo @route="uploads.index">uploads</LinkTo>
+    <LinkTo @route="uploads.new">upload</LinkTo>
     <LinkTo @route="session.delete">sign out</LinkTo>
   {{else}}
     <LinkTo @route="session.new">sign in</LinkTo>

@@ -15,7 +15,11 @@
   </div>
 
   <div class="actions">
-    <Input::Button @value="Delete" @onClick={{this.delete}}/>
+    {{#if this.isDeleting}}
+      Deleting…
+    {{else}}
+      <Input::Button::Confirm @value="Delete" @confirmation="Delete, sure?" @onClick={{this.delete}}/>
+    {{/if}}
   </div>
 
 </div>
