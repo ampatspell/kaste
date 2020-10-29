@@ -45,7 +45,7 @@ export default class PagesUploadsNew extends EmberObject {
       data,
       metadata: {
         contentType,
-        contentDisposition: `filename="${filename}"`
+        contentDisposition: `attachment; filename="${filename}"`
       }
     });
 
