@@ -1,9 +1,15 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default class IndexRoute extends Route {
 
+  @service
+  store
+
   beforeModel() {
-    this.transitionTo('uploads');
+    if(this.store.user) {
+      this.transitionTo('uploads');
+    }
   }
 
 }

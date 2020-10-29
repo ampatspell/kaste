@@ -8,6 +8,12 @@ export default class UploadsRoute extends Route {
   @service
   store
 
+  beforeModel() {
+    if(!this.store.user) {
+      this.transitionTo('index');
+    }
+  }
+
   model() {
     return this.store.user.uploads;
   }
