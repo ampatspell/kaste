@@ -8,15 +8,32 @@
   > a {
     display: block;
     padding: 8px 15px 7px 15px;
+    @include mobile() {
+      padding-left: 5px;
+      padding-right: 5px;
+      &:first-child {
+        padding-left: 15px;
+      }
+      &:last-child {
+        padding-right: 15px;
+      }
+    }
     text-decoration: none;
     &.active {
       background: fade-out(#000, 0.2);
       color: #fff;
     }
+    white-space: nowrap;
     &.name {
       background: none;
       color: #000;
       font-weight: 600;
+      @include ellipsis();
+    }
+    @include mobile() {
+      &.uploads {
+        display: none;
+      }
     }
   }
 }

@@ -6,6 +6,7 @@
     > .filename {
       font-weight: 600;
       margin-bottom: 2px;
+      @include ellipsis();
     }
     > .details {
       margin-bottom: 2px;

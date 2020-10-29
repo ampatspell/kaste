@@ -2,10 +2,15 @@
   > .url {
     font-weight: 600;
     margin-bottom: 15px;
+    > a {
+      display: block;
+      @include ellipsis();
+    }
   }
   > .filename {
     font-weight: 600;
     margin-bottom: 3px;
+    @include ellipsis();
   }
   > .details {
     margin-bottom: 3px;

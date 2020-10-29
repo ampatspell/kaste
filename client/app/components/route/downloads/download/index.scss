@@ -5,10 +5,12 @@
   align-items: center;
   justify-content: center;
   > .content {
+    max-width: 100%;
     > .file {
       > .filename {
         font-weight: 600;
         margin-bottom: 2px;
+        @include ellipsis();
       }
     }
   }

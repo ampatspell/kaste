@@ -3,7 +3,9 @@
   <div class="content">
     {{yield}}
   </div>
-  <div class="footer">
-    <Block::Stats/>
-  </div>
+  {{#if this.store.isDevelopment}}
+    <div class="footer">
+      <Block::Stats/>
+    </div>
+  {{/if}}
 </div>

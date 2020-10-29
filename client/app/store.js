@@ -1,16 +1,16 @@
 import Store from 'zuglet/store';
 import { reads } from 'macro-decorators';
+import environment from './config/environment';
+
+let {
+  kaste: {
+    firebase,
+    isDevelopment
+  }
+} = environment;
 
 const options = {
-  firebase: {
-    apiKey: "AIzaSyDwCGLTmvKCiCxIO9msehKyULJ_rilnEvw",
-    authDomain: "quatsch-38adf.firebaseapp.com",
-    databaseURL: "https://quatsch-38adf.firebaseio.com",
-    projectId: "quatsch-38adf",
-    storageBucket: "quatsch-38adf.appspot.com",
-    messagingSenderId: "316370319143",
-    appId: "1:316370319143:web:1ea76935876b7619"
-  },
+  firebase,
   firestore: {
     persistenceEnabled: true
   },
@@ -25,6 +25,7 @@ const options = {
 export default class DummyStore extends Store {
 
   options = options
+  isDevelopment = isDevelopment
 
   @reads('auth.user')
   user

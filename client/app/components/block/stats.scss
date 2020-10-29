@@ -9,5 +9,6 @@
     > .title {
       font-weight: 600;
     }
+    @include ellipsis();
   }
 }
