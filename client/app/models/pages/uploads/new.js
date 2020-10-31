@@ -60,12 +60,14 @@ export default class PagesUploadsNew extends EmberObject {
   }
 
   async _createDocument({ ref, url, filename, contentType, size }) {
+    let { store, store: { user: { uid: owner } } } = this;
     let doc = ref.new({
+      owner,
       url,
       filename,
       contentType,
       size,
-      createdAt: this.store.serverTimestamp
+      createdAt: store.serverTimestamp
     });
     this.doc = doc;
     await doc.save();

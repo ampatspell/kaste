@@ -14,12 +14,16 @@
     {{@model.formattedTimestamp}}
   </div>
 
-  <div class="actions">
-    {{#if this.isDeleting}}
-      Deleting…
-    {{else}}
-      <Input::Button::Confirm @value="Delete" @confirmation="Delete, sure?" @onClick={{this.delete}}/>
-    {{/if}}
-  </div>
+  {{#if @model.isOwner}}
+
+    <div class="actions">
+      {{#if this.isDeleting}}
+        Deleting…
+      {{else}}
+        <Input::Button::Confirm @value="Delete" @confirmation="Delete, sure?" @onClick={{this.delete}}/>
+      {{/if}}
+    </div>
+
+  {{/if}}
 
 </div>
