@@ -7,7 +7,10 @@
   }
   > a {
     display: block;
-    padding: 11px 15px 10px 15px;
+    padding: 8px 15px 7px 15px;
+    @include mobile() {
+      padding: 11px 15px 10px 15px;
+    }
     text-decoration: none;
     &.active {
       background: fade-out(#000, 0.2);
