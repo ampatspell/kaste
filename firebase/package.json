@@ -1,0 +1,9 @@
+{
+  "name": "kaste",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "deploy:all": "firebase deploy --project $FIREBASE",
+    "deploy:hosting": "firebase deploy --only hosting --project $FIREBASE"
+  }
+}
