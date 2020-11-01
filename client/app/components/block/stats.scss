@@ -1,4 +1,4 @@
-.block-stats {
+.zuglet-stats {
   padding: 10px;
   font-size: $font-size-smaller;
   > .section {
@@ -6,7 +6,7 @@
     &:last-child {
       margin-bottom: 0;
     }
-    > .title {
+    > .label {
       font-weight: 600;
     }
     @include ellipsis();
