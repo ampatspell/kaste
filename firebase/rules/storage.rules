@@ -6,9 +6,17 @@ service firebase.storage {
       return request.auth != null && request.auth.uid != null;
     }
 
+    function hasRole(role) {
+      return isSignedIn() && request.auth.token.role == role;
+    }
+
+    function isUploader() {
+      return hasRole('uploader');
+    }
+
     match /uploads/{upload} {
       allow read: if true;
-      allow write: if isSignedIn();
+      allow write: if isUploader();
     }
 
   }
