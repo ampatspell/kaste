@@ -1,18 +1,5 @@
 {
   "projects": {
-    "amateurinmotion": "amateurinmotion-prod",
     "quatsch": "quatsch-38adf"
-  },
-  "targets": {
-    "quatsch-38adf": {
-      "hosting": {
-        "kaste": [ "quatsch-38adf" ]
-      }
-    },
-    "amateurinmotion-prod": {
-      "hosting": {
-        "kaste": [ "d9u0udq" ]
-      }
-    }
   }
 }
