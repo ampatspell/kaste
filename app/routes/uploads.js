@@ -11,6 +11,11 @@ export default class UploadsRoute extends Route {
   beforeModel() {
     if(!this.store.user) {
       this.transitionTo('index');
+      return;
+    }
+    if(!this.store.user.isUploader) {
+      this.transitionTo('session.denied');
+      return;
     }
   }
 

@@ -16,7 +16,7 @@ class Application {
     this.exports = {
       callable_user_setRole: this.require('./callables/set-role'),
       callable_user_getRole: this.require('./callables/get-role'),
-      uploads_onDelete = this.require('./triggers/uploads/on-delete')
+      uploads_onDelete: this.require('./triggers/uploads/on-delete')
     };
   }
 

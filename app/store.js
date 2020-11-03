@@ -34,4 +34,14 @@ export default class DummyStore extends Store {
     await this.auth.signOut();
   }
 
+  async getRole(uid) {
+    let { data } = await store.functions.call('callable_user_getRole', { uid });
+    return data;
+  }
+
+  async setRole(uid, role) {
+    let { data } = await store.functions.call('callable_user_setRole', { uid, role });
+    return data;
+  }
+
 }
