@@ -3,11 +3,9 @@ const normalizeConfig = require('./config');
 class Application {
 
   constructor(admin, functions) {
-    this.admin = admin;
-    this.functions = functions;
-
     this.config = normalizeConfig(functions.config());
-
+    this.admin = admin;
+    this.functions = functions.region(this.config.environment.region);
     this.auth = admin.auth();
     this.firestore = admin.firestore();
     this.storage = admin.storage();

@@ -5,7 +5,7 @@ import environment from './config/environment';
 let {
   kaste: {
     firebase,
-    isDevelopment
+    functions
   }
 } = environment;
 
@@ -17,15 +17,12 @@ const options = {
   auth: {
     user: 'user'
   },
-  functions: {
-    region: null
-  }
+  functions
 };
 
 export default class DummyStore extends Store {
 
   options = options
-  isDevelopment = isDevelopment
 
   @reads('auth.user')
   user

@@ -25,7 +25,9 @@ module.exports = function(environment) {
         messagingSenderId: "316370319143",
         appId: "1:316370319143:web:1ea76935876b7619"
       },
-      isDevelopment: false
+      functions: {
+        region: 'europe-west2'
+      }
     }
   };
 
@@ -35,7 +37,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.kaste.isDevelopment = true;
   }
 
   if (environment === 'test') {

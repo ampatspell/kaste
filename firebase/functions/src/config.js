@@ -2,6 +2,14 @@ const assert = require('assert');
 
 const validate = (ok, message) => assert(ok, `Firebase config: ${message}`);
 
+const normalizeEnvironment = (root={}) => {
+  let { region } = root;
+  validate(region, 'environment.region is required');
+  return {
+    region
+  };
+}
+
 const normalizeUsers = (root={}) => {
   let { admin } = root;
   validate(admin, 'users.admin is required');
@@ -11,8 +19,9 @@ const normalizeUsers = (root={}) => {
 }
 
 module.exports = root => {
-  let { users } = root;
+  let { environment, users } = root;
   return {
+    environment: normalizeEnvironment(environment),
     users: normalizeUsers(users)
   };
 }
