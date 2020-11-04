@@ -16,6 +16,7 @@
     white-space: nowrap;
     &.name {
       @include ellipsis();
+      text-decoration: none;
     }
     @include mobile() {
       &.uploads {
