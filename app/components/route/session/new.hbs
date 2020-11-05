@@ -1,0 +1,15 @@
+<div class="route-session-new">
+  <div class="content">
+
+    {{#if @model.error}}
+      <div class="row error">
+        {{@model.error.message}}
+      </div>
+    {{/if}}
+
+    <div class="row">
+      <input type="button" value="Sign in" disabled={{@mode.isActionDisabled}} {{on "click" this.perform}}/>
+    </div>
+
+  </div>
+</div>

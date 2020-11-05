@@ -7,21 +7,16 @@
   }
   > a {
     display: block;
-    padding: 8px 15px 7px 15px;
-    @include mobile() {
-      padding: 11px 15px 10px 15px;
-    }
+    padding: 10px 15px;
     text-decoration: none;
+    font-weight: 600;
     &.active {
-      background: fade-out(#000, 0.2);
-      color: #fff;
+      text-decoration: underline;
     }
     white-space: nowrap;
     &.name {
-      background: none;
-      color: #000;
-      font-weight: 600;
       @include ellipsis();
+      text-decoration: none;
     }
     @include mobile() {
       &.uploads {

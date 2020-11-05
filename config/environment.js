@@ -17,15 +17,18 @@ module.exports = function(environment) {
     },
     kaste: {
       firebase: {
-        apiKey: "AIzaSyDwCGLTmvKCiCxIO9msehKyULJ_rilnEvw",
-        authDomain: "quatsch-38adf.firebaseapp.com",
-        databaseURL: "https://quatsch-38adf.firebaseio.com",
-        projectId: "quatsch-38adf",
-        storageBucket: "quatsch-38adf.appspot.com",
-        messagingSenderId: "316370319143",
-        appId: "1:316370319143:web:1ea76935876b7619"
+        apiKey: "AIzaSyD-VB88AREQGysXstiKAuZp5p6NBboSkjE",
+        authDomain: "kaste-ir.firebaseapp.com",
+        databaseURL: "https://kaste-ir.firebaseio.com",
+        projectId: "kaste-ir",
+        storageBucket: "kaste-ir.appspot.com",
+        messagingSenderId: "920112943882",
+        appId: "1:920112943882:web:652929ca90332c968aa0f3",
+        measurementId: "G-2NE4NEG0YG"
       },
-      isDevelopment: false
+      functions: {
+        region: 'europe-west2'
+      }
     }
   };
 
@@ -35,7 +38,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.kaste.isDevelopment = true;
   }
 
   if (environment === 'test') {
