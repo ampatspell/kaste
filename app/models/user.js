@@ -1,5 +1,5 @@
 import User from 'zuglet/user';
-import { activate } from 'zuglet/decorators';
+import { model } from 'zuglet/decorators';
 import { tracked } from '@glimmer/tracking';
 
 export default class KasteUser extends User {
@@ -7,21 +7,17 @@ export default class KasteUser extends User {
   @tracked
   isUploader = false
 
-  @activate().content(({ store, isUploader }) => {
-    if(!isUploader) {
-      return;
+  @model().named(({ isUploader }) => {
+    if(isUploader) {
+      return 'user/uploads';
     }
-    return store.models.create('user/uploads');
   })
   uploads
 
   async _restoreToken() {
     let { claims } = await this.token({ type: 'json' });
     let { role } = claims || {};
-    let isUploader = role === 'uploader';
-    if(isUploader !== this.isUploader) {
-      this.isUploader = isUploader;
-    }
+    this.isUploader = role === 'uploader';
   }
 
   async restore() {
