@@ -1,8 +1,8 @@
-import EmberObject from '@ember/object';
+import ZugletObject from 'zuglet/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
-export default class PagesSessionBase extends EmberObject {
+export default class PagesSessionBase extends ZugletObject {
 
   @service
   store

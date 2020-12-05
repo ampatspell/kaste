@@ -1,9 +1,9 @@
-import EmberObject from '@ember/object';
+import ZugletObject from 'zuglet/object';
 import { inject as service } from '@ember/service';
 import { activate, models } from 'zuglet/decorators';
 import { load } from 'zuglet/utils';
 
-export default class Uploads extends EmberObject {
+export default class Uploads extends ZugletObject {
 
   @service
   store

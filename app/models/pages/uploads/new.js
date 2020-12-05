@@ -1,10 +1,10 @@
-import EmberObject from '@ember/object';
+import ZugletObject from 'zuglet/object';
 import { tracked } from '@glimmer/tracking';
 import { or, not, bool, reads } from 'macro-decorators';
 import { inject as service } from '@ember/service';
 import { activate } from 'zuglet/decorators';
 
-export default class PagesUploadsNew extends EmberObject {
+export default class PagesUploadsNew extends ZugletObject {
 
   @service
   store

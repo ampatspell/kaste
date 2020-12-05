@@ -1,16 +1,21 @@
-import EmberObject from '@ember/object';
+import ZugletObject from 'zuglet/object';
 import { reads } from 'macro-decorators';
 import { formatBytes, formatContentType, formatTimestamp } from '../../utils';
 import { inject as service } from '@ember/service';
 
 const data = name => reads(`doc.data.${name}`);
 
-export default class Upload extends EmberObject {
+export default class Upload extends ZugletObject {
 
   @service
   store
 
   doc = null
+
+  constructor(owner, { doc }) {
+    super(owner);
+    this.doc = doc;
+  }
 
   @reads('doc.id')
   id
