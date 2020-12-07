@@ -21,7 +21,7 @@ export default class KasteUser extends User {
   }
 
   async restore() {
-    super.restore(...arguments);
+    await super.restore(...arguments);
     await this._restoreToken();
     let { uploads } = this;
     if(uploads) {
