@@ -16,3 +16,16 @@ $ firebase functions:config:set environment.region="europe-west2"
 let store = Ember.Namespace.NAMESPACES[0].__container__.lookup('service:store');
 await store.setRole('target-uid', 'uploader');
 ```
+
+## Fork
+
+To deploy it in your own firebase project:
+
+* `config/environment.js` → update `ENV.kaste` props
+* `firebase/.firebaserc` → replace `kaste-ir` with your project id
+
+```
+$ npm install
+$ cd firebase/functions && npm install
+$ npm run deploy:all
+```
