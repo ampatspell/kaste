@@ -1,5 +1,5 @@
-import Application from 'thingie/app';
-import config from 'thingie/config/environment';
+import Application from 'kaste/app';
+import config from 'kaste/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

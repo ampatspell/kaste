@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'kaste',
     environment,
@@ -10,8 +10,9 @@ module.exports = function(environment) {
       FEATURES: {
       },
       EXTEND_PROTOTYPES: {
-        Date: false
-      }
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false,
+      },
     },
     APP: {
     },
