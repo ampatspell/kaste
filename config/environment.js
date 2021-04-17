@@ -1,5 +1,14 @@
 'use strict';
 
+const assert = require('assert');
+
+let env = process.env.FIREBASE;
+assert(env, `FIREBASE environment variable is required`);
+let kaste = require('../config')[env];
+assert(kaste, `Config for '${env}' environment not declared in config.js`);
+
+console.log(kaste);
+
 module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'kaste',
@@ -16,21 +25,7 @@ module.exports = function (environment) {
     },
     APP: {
     },
-    kaste: {
-      firebase: {
-        apiKey: "AIzaSyD-VB88AREQGysXstiKAuZp5p6NBboSkjE",
-        authDomain: "kaste-ir.firebaseapp.com",
-        databaseURL: "https://kaste-ir.firebaseio.com",
-        projectId: "kaste-ir",
-        storageBucket: "kaste-ir.appspot.com",
-        messagingSenderId: "920112943882",
-        appId: "1:920112943882:web:652929ca90332c968aa0f3",
-        measurementId: "G-2NE4NEG0YG"
-      },
-      functions: {
-        region: 'europe-west2'
-      }
-    }
+    kaste
   };
 
   if (environment === 'development') {

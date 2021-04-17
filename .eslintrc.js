@@ -33,6 +33,7 @@ module.exports = {
         'config/**/*.js',
         'lib/*/index.js',
         'server/**/*.js',
+        'config.js'
       ],
       parserOptions: {
         sourceType: 'script',

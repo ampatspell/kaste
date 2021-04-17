@@ -21,11 +21,11 @@ await store.setRole('target-uid', 'uploader');
 
 To deploy it in your own firebase project:
 
-* `config/environment.js` → update `ENV.kaste` props
-* `firebase/.firebaserc` → replace `kaste-ir` with your project id
+* `config.js` → update production environment config
+* `firebase/.firebaserc` → set project id for `production`
 
 ```
 $ npm install
 $ cd firebase/functions && npm install
-$ npm run deploy:all
+$ FIREBASE=production npm run deploy:all
 ```

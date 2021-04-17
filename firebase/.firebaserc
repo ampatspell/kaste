@@ -1,5 +1,6 @@
 {
   "projects": {
-    "kaste-ir": "kaste-ir"
+    "production": "kaste-ir",
+    "development": "quatsch-c63e2"
   }
 }
