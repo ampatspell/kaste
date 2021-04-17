@@ -1,112 +1,72 @@
 import ZugletObject from 'zuglet/object';
 import { tracked } from '@glimmer/tracking';
-import { or, not, bool, reads } from 'macro-decorators';
-import { inject as service } from '@ember/service';
-import { activate } from 'zuglet/decorators';
+import { or, not, bool } from 'macro-decorators';
+import { models } from 'zuglet/decorators';
 
 export default class PagesUploadsNew extends ZugletObject {
 
-  @service
-  store
+  @tracked _files;
 
-  @tracked file = null
-  @tracked error = null
-  @tracked isBusy = false
+  @models()
+    .source(({ _files }) =>  _files)
+    .named('pages/uploads/new/file')
+    .mapping(file => ({ file }))
+  files;
 
-  @bool('file')
-  isValid
+  @bool('files.length')
+  isValid;
+
+  get errors() {
+    return this.files.map(file => file.error).filter(Boolean);
+  }
+
+  get error() {
+    return this.errors?.[0];
+  }
 
   @bool('error')
-  isError
+  isError;
 
   @not('isValid')
-  isInvalid
+  isInvalid;
+
+  get isBusy() {
+    return !!this.files.find(file => file.isBusy);
+  }
+
+  get progress() {
+    let { files } = this;
+    let total = files.reduce((total, file) => total + file.progress, 0);
+    return Math.round(total / files.length);
+  }
 
   @or('isInvalid', 'isBusy')
-  isUploadDisabled
+  isUploadDisabled;
 
-  //
-
-  @activate()
-  task
-
-  @reads('task.progress')
-  progress
-
-  @tracked
-  doc
-
-  //
-
-  async _uploadFile({ path, file: data, filename, contentType }) {
-    let ref = this.store.storage.ref(path);
-    let task = ref.put({
-      type: 'data',
-      data,
-      metadata: {
-        contentType,
-        contentDisposition: `attachment; filename="${filename}"`
-      }
-    });
-
-    this.task = task;
-    await task.promise;
-
-    let url = await ref.url();
-
-    return {
-      url
-    };
-  }
-
-  async _createDocument({ ref, url, filename, contentType, size }) {
-    let { store, store: { user: { uid: owner } } } = this;
-    let doc = ref.new({
-      owner,
-      url,
-      filename,
-      contentType,
-      size,
-      createdAt: store.serverTimestamp
-    });
-    this.doc = doc;
-    await doc.save();
-  }
-
-  async _upload() {
-    let { file, store } = this;
-
-    let filename = file.name;
-    let contentType = file.type;
-    let size = file.size;
-
-    let ref = store.collection('uploads').doc();
-    let path = ref.path;
-
-    let { url } = await this._uploadFile({ path, file, filename, contentType });
-    await this._createDocument({ ref, url, filename, size, contentType });
-
-    let { id } = ref;
-    return {
-      id
-    };
+  onFiles(files) {
+    this._files = files;
   }
 
   async upload() {
     if(this.isUploadDisabled) {
       return;
     }
-    this.isBusy = true;
-    this.error = null;
-    try {
-      let { id } = await this._upload();
-      this.isBusy = false;
-      return { status: 'success' , id };
-    } catch(err) {
-      this.error = err;
-      this.isBusy = false;
+
+    await Promise.all(this.files.map(file => file.upload()));
+
+    if(this.errors.length) {
       return { status: 'error' };
     }
+
+    if(this.files.length === 1) {
+      let { id } = this.files[0];
+      return {
+        status: 'success',
+        id
+      };
+    }
+
+    return { status: 'success' };
   }
 
 }

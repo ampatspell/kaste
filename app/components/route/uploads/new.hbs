@@ -16,7 +16,7 @@
             {{this.model.error.message}}
           </div>
         {{/if}}
-        <Input::File @onFile={{this.onFile}} @class="file"/>
+        <Input::File @onFiles={{this.onFiles}} @class="file"/>
         <Input::Button @class="button" @value="Upload file" @disabled={{this.model.isUploadDisabled}} @onClick={{this.onSubmit}}/>
       </div>
 

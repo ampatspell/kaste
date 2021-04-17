@@ -7,19 +7,23 @@ import { inject as service } from '@ember/service';
 export default class RouteUploadsNewComponent extends Component {
 
   @service
-  router
+  router;
 
   @reads('args.model')
-  model
+  model;
 
   @action
-  onFile(file) {
-    this.model.file = file;
+  onFiles(files) {
+    this.model.onFiles(files);
   }
 
   @alive()
   didUpload({ id }) {
-    this.router.transitionTo('uploads.upload', id);
+    if(id) {
+      this.router.transitionTo('uploads.upload', id);
+    } else {
+      this.router.transitionTo('uploads');
+    }
   }
 
   @action
