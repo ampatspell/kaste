@@ -16,8 +16,20 @@
             {{this.model.error.message}}
           </div>
         {{/if}}
-        <Input::File @onFile={{this.onFile}} @class="file"/>
-        <Input::Button @class="button" @value="Upload file" @disabled={{this.model.isUploadDisabled}} @onClick={{this.onSubmit}}/>
+        {{#unless this.model.isError}}
+          <Input::File @onFiles={{this.onFiles}} @class="file"/>
+        {{/unless}}
+        <Input::Button
+          @class="button"
+          @value={{if this.model.isError
+            'Retry failed files'
+            (if (gt this.model.files.length 1)
+              "Upload files"
+              "Upload file")
+          }}
+          @disabled={{this.model.isUploadDisabled}}
+          @onClick={{this.onSubmit}}
+        />
       </div>
 
     {{/if}}

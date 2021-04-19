@@ -1,8 +1,8 @@
 <div class="input-file" {{class @class}}>
-  {{#if this.file}}
-    <div class="button selected">{{this.file.name}} ({{this.size}})</div>
+  {{#if this.total}}
+    <div class="button selected">{{this.total}}</div>
   {{else}}
-    <div class="button placehlder">Choose file…</div>
+    <div class="button placeholder">Choose one or more files…</div>
   {{/if}}
-  <input class="input" type="file" {{on "change" this.onFiles}}/>
+  <input class="input" type="file" multiple="true" {{on "change" this.onFiles}}/>
 </div>
