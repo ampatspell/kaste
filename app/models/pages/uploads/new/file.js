@@ -10,6 +10,7 @@ export default class PagesUploadsNewFile extends ZugletObject {
   store;
 
   file = null;
+  ref = null;
 
   @tracked error = null;
   @tracked isBusy = false;
@@ -17,7 +18,10 @@ export default class PagesUploadsNewFile extends ZugletObject {
   constructor(owner, { file }) {
     super(owner);
     this.file = file;
+    this.ref = this.store.collection('uploads').doc();
   }
+
+  @reads('ref.id') id;
 
   @activate()
   task;
@@ -66,30 +70,20 @@ export default class PagesUploadsNewFile extends ZugletObject {
   }
 
   async _upload() {
-    let { file, store } = this;
+    let { file, ref } = this;
 
     let filename = file.name;
     let contentType = file.type;
     let size = file.size;
-
-    let ref = store.collection('uploads').doc();
     let path = ref.path;
 
     let { url } = await this._uploadFile({ path, file, filename, contentType });
     await this._createDocument({ ref, url, filename, size, contentType });
-
-    let { id } = ref;
-    this.id = id;
-  }
-
-  _didUpload() {
-    let { id } = this;
-    return { status: 'success' , id };
   }
 
   async upload() {
     if(this.isSuccess) {
-      return this._didUpload();
+      return;
     }
     this.isBusy = true;
     this.error = null;
@@ -97,11 +91,9 @@ export default class PagesUploadsNewFile extends ZugletObject {
       await this._upload();
       this.isBusy = false;
       this.isSuccess = true;
-      return this._didUpload();
     } catch(err) {
       this.error = err;
       this.isBusy = false;
-      return { status: 'error' };
     }
   }
 

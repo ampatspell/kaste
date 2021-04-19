@@ -3,15 +3,20 @@ import { tracked } from '@glimmer/tracking';
 import { or, not, bool } from 'macro-decorators';
 import { models } from 'zuglet/decorators';
 
+const files = models()
+  .source(({ _files }) =>  _files)
+  .named('pages/uploads/new/file')
+  .mapping(file => ({ file }));
+
 export default class PagesUploadsNew extends ZugletObject {
 
   @tracked _files;
 
-  @models()
-    .source(({ _files }) =>  _files)
-    .named('pages/uploads/new/file')
-    .mapping(file => ({ file }))
-  files;
+  onFiles(files) {
+    this._files = files;
+  }
+
+  @files files;
 
   @bool('files.length')
   isValid;
@@ -34,17 +39,18 @@ export default class PagesUploadsNew extends ZugletObject {
     return !!this.files.find(file => file.isBusy);
   }
 
-  get progress() {
-    let { files } = this;
-    let total = files.reduce((total, file) => total + file.progress, 0);
-    return Math.round(total / files.length);
-  }
-
   @or('isInvalid', 'isBusy')
   isUploadDisabled;
 
-  onFiles(files) {
-    this._files = files;
+  get progress() {
+    let { files } = this;
+    let total = files.reduce((total, { progress }) => {
+      if(progress) {
+        total = total + progress;
+      }
+      return total;
+    }, 0);
+    return Math.round(total / files.length);
   }
 
   async upload() {
@@ -54,7 +60,7 @@ export default class PagesUploadsNew extends ZugletObject {
 
     await Promise.all(this.files.map(file => file.upload()));
 
-    if(this.errors.length) {
+    if(this.error) {
       return { status: 'error' };
     }
 
