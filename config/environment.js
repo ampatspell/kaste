@@ -7,8 +7,6 @@ assert(env, `FIREBASE environment variable is required`);
 let kaste = require('../config')[env];
 assert(kaste, `Config for '${env}' environment not declared in config.js`);
 
-console.log(kaste);
-
 module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'kaste',
