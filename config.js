@@ -1,7 +1,7 @@
 const config = firebase => ({
   firebase,
   functions: {
-    region: 'europe-west2'
+    region: 'europe-west3'
   }
 });
 
@@ -16,14 +16,12 @@ const development = config({
 });
 
 const production = config({
-  apiKey: "AIzaSyD-VB88AREQGysXstiKAuZp5p6NBboSkjE",
-  authDomain: "kaste-ir.firebaseapp.com",
-  databaseURL: "https://kaste-ir.firebaseio.com",
-  projectId: "kaste-ir",
-  storageBucket: "kaste-ir.appspot.com",
-  messagingSenderId: "920112943882",
-  appId: "1:920112943882:web:652929ca90332c968aa0f3",
-  measurementId: "G-2NE4NEG0YG"
+  apiKey: "AIzaSyCAG0P87gI7bTFvTy2mgTXZtw2jn8Ar4fU",
+  authDomain: "maija-sjomkane.firebaseapp.com",
+  projectId: "maija-sjomkane",
+  storageBucket: "maija-sjomkane.appspot.com",
+  messagingSenderId: "828826462006",
+  appId: "1:828826462006:web:7fe9cf142dbdf1009bb597"
 });
 
 module.exports = {
