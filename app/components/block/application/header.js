@@ -10,7 +10,7 @@ export default class BlockApplicationHeaderComponent extends Component {
   @reads('store.user.email')
   email
 
-  defaultName = 'kaste'
+  defaultName = 'Maija Sjomkāne'
 
   get name() {
     return this.email || this.defaultName;
