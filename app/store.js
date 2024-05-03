@@ -41,4 +41,12 @@ export default class DummyStore extends Store {
     return data;
   }
 
+  async onDownload(id) {
+    try {
+      await this.functions.call('callable_upload_onDownload', { id });
+    } catch(err) {
+      console.log(err.stack);
+    }
+  }
+
 }
