@@ -63,6 +63,7 @@ export default class PagesUploadsNewFile extends ZugletObject {
       filename,
       contentType,
       size,
+      downloads: 0,
       createdAt: store.serverTimestamp
     });
     this.doc = doc;
