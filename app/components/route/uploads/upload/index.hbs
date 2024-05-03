@@ -6,12 +6,14 @@
 
   <div class="filename">{{@model.filename}}</div>
 
-  <div class="details">
-    {{@model.formattedContentType}}, {{@model.formattedSize}}
-  </div>
+  {{#if @model.downloadsString}}
+    <div class="downloads">
+      {{@model.downloadsString}}
+    </div>
+  {{/if}}
 
-  <div class="date">
-    {{@model.formattedTimestamp}}
+  <div class="details">
+    {{@model.formattedContentType}}, {{@model.formattedSize}}, {{@model.formattedTimestamp}}
   </div>
 
   {{#if @model.isOwner}}

@@ -1,9 +1,7 @@
 <div class="item" role="button" {{on "click" @onClick}}>
   <div class="filename">{{@model.filename}}</div>
-  <div class="details">
-    {{@model.formattedContentType}}, {{@model.formattedSize}}
-  </div>
-  <div class="date">
-    {{@model.formattedTimestamp}}
-  </div>
+  {{#if @model.downloadsString}}
+    <div class="downloads">{{@model.downloadsString}}</div>
+  {{/if}}
+  <div class="details">{{@model.formattedContentType}}, {{@model.formattedSize}}, {{@model.formattedTimestamp}}</div>
 </div>
