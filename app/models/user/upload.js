@@ -38,6 +38,17 @@ export default class Upload extends ZugletObject {
   @data('owner')
   owner
 
+  @data('downloads')
+  downloads
+
+  get downloadsString() {
+    let downloads = this.downloads;
+    if(typeof downloads === 'undefined') {
+      return undefined;
+    }
+    return `${downloads} ${downloads === 1 ? 'download' : 'downloads'}`;
+  }
+
   @reads('store.user.uid')
   _uid
 

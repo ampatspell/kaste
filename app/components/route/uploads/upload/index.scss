@@ -12,10 +12,11 @@
     margin-bottom: 3px;
     @include ellipsis();
   }
-  > .details {
+  > .downloads {
+    font-weight: 600;
     margin-bottom: 3px;
   }
-  > .date {
+  > .details {
     font-size: $font-size-smaller;
     margin-bottom: 25px;
   }
