@@ -21,7 +21,8 @@ const production = config({
   projectId: "maija-sjomkane",
   storageBucket: "maija-sjomkane.appspot.com",
   messagingSenderId: "828826462006",
-  appId: "1:828826462006:web:7fe9cf142dbdf1009bb597"
+  appId: "1:828826462006:web:7fe9cf142dbdf1009bb597",
+  measurementId: "G-770YQ9QRQ1"
 });
 
 module.exports = {
