@@ -1,9 +1,19 @@
 import EmberRouter from '@ember/routing/router';
 import config from 'kaste/config/environment';
+import { inject as service } from '@ember/service';
 
 export default class Router extends EmberRouter {
   location = config.locationType;
   rootURL = config.rootURL;
+
+  @service analytics;
+
+  constructor() {
+    super(...arguments);
+    this.on('routeDidChange', (transition) => {
+      this.analytics.onTransition(transition);
+    });
+  }
 }
 
 Router.map(function() {
